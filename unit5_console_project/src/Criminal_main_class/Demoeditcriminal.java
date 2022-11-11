@@ -9,7 +9,32 @@ public class Demoeditcriminal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		Scanner sc = new Scanner(System.in);
+		 {
+			
+			System.out.println("----------select option--------");
+			
+			System.out.println("enter 1 for full details update");
+			System.out.println("enter 2 for name update");
+			System.out.println("enter 3 for age update");
+			System.out.println("enter 4 for gender update");
+			System.out.println("enter 5 for address update");
+			System.out.println("enter 6 for bodymark update");
+			System.out.println("enter 7 for area of arrest update");
+			System.out.println("enter 8 for crime type/id update");
+	
+		}
+		
+		 	System.out.println("enter choice number");
+			int select = sc.nextInt();
+			
+			switch(select) {
+			
+			case 1:
+				
+			
+			}
 		
 		Intr_criminaldetails_impl it1 = new Intr_criminaldetails_impl();
 		
