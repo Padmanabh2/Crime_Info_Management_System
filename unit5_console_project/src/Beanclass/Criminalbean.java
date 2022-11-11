@@ -72,6 +72,19 @@ public class Criminalbean {
 		this.crime_type_or_id = crime_type_or_id;
 	}
 	
+	public Criminalbean( String cri_name, int cri_age, String cri_gender, String cri_address,
+			String cri_bodymark, String area_of_arrest, int crime_type_or_id) {
+		super();
+		
+		this.cri_name = cri_name;
+		this.cri_age = cri_age;
+		this.cri_gender = cri_gender;
+		this.cri_address = cri_address;
+		this.cri_bodymark = cri_bodymark;
+		this.area_of_arrest = area_of_arrest;
+		this.crime_type_or_id = crime_type_or_id;
+	}
+	
 	public Criminalbean() {}
 	@Override
 	public String toString() {
