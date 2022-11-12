@@ -1,6 +1,7 @@
 package Dbutil;
 
 import java.sql.Date;
+import java.util.List;
 
 import Beanclass.Crimebean;
 import Exception.Crimedetailsexep;
@@ -30,6 +31,10 @@ public interface Intr_crimedetails {
 	
 	
 	public String deletecomplaint(int srno) throws Crimedetailsexep;
+	
+	public List<Crimebean> showallcomplainttable() throws Crimedetailsexep;
+	
+	public List<Crimebean> showallcomplaintbyplaceofcrime() throws Crimedetailsexep;
 	
 	
 }

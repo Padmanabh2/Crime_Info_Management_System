@@ -3,7 +3,10 @@ package Dbutil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Beanclass.Crimebean;
 import Connection.Providecon;
@@ -308,6 +311,74 @@ public class Intr_crimedetailsimpl implements Intr_crimedetails {
 		}
 		
 		return st;
+		
+	}
+
+	@Override
+	public List<Crimebean> showallcomplainttable() throws Crimedetailsexep {
+		
+		List<Crimebean> cb = new ArrayList<Crimebean>();
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select * from main");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int srno = rs.getInt("srno");
+				Date dt = rs.getDate("date_of_crime");
+				String place = rs.getString("place_of_crime");
+				int crimeid = rs.getInt("crime_id");
+				String vnm = rs.getString("victime_names");
+				String snm = rs.getString("suspect_names");
+				String status = rs.getString("status");
+				
+				cb.add(new Crimebean(srno,dt,place,crimeid,vnm,snm,status));
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Crimedetailsexep("some error occured...");
+		}
+		
+		return cb;
+		
+	}
+
+	@Override
+	public List<Crimebean> showallcomplaintbyplaceofcrime() throws Crimedetailsexep {
+		
+		List<Crimebean> cb = new ArrayList<Crimebean>();
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select * from main group by place_of_crime order by crime_id desc");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int srno = rs.getInt("srno");
+				Date dt = rs.getDate("date_of_crime");
+				String place = rs.getString("place_of_crime");
+				int crimeid = rs.getInt("crime_id");
+				String vnm = rs.getString("victime_names");
+				String snm = rs.getString("suspect_names");
+				String status = rs.getString("status");
+				
+				cb.add(new Crimebean(srno,dt,place,crimeid,vnm,snm,status));
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Crimedetailsexep("some error occured...");
+		}
+		
+		return cb;
 		
 	}
 
