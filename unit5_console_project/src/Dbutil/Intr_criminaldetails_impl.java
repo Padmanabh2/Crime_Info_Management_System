@@ -50,7 +50,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		try (Connection con = Providecon.provideConnection()){
 			
-			PreparedStatement ps = con.prepareStatement("update criminal_details set(cri_name,cri_age,cri_gender,cri_address,cri_bodymark,area_of_arrest,crime_type_or_id) values(?,?,?,?,?,?,?) where cri_id = ?");
+			PreparedStatement ps = con.prepareStatement(" update criminal_details set cri_name = ?, cri_age = ?, cri_gender = ?, cri_address = ?, cri_bodymark = ?, area_of_arrest = ?, crime_type_or_id = ? where cri_id = ?");
 			
 			ps.setString(1, cb.getCri_name());
 			ps.setInt(2, cb.getCri_age());
@@ -82,7 +82,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		String st = "criminal details not updated";
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
@@ -114,7 +114,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		String st = "criminal details not updated";
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
@@ -145,7 +145,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		String st = "criminal details not updated";
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
@@ -176,7 +176,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		String st = "criminal details not updated";
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
@@ -207,7 +207,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		String st = "criminal details not updated";
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
@@ -238,7 +238,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		String st = "criminal details not updated";
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
@@ -269,7 +269,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		String st = "criminal details not updated";
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
@@ -295,14 +295,14 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 	}
 	
-	
+	//-------------------------delete part--------------------------------------
 	
 	@Override
 	public String deletecriminaldetails(int id) throws Criminaldetailsexep{
 	
 		String st = "criminal record not deleted with id "+id;
 		
-		Criminalbean cb = new Criminalbean();
+//		Criminalbean cb = new Criminalbean();
 		
 		try (Connection con = Providecon.provideConnection()){
 			
