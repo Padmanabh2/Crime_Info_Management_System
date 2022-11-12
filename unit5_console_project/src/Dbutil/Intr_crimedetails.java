@@ -1,12 +1,15 @@
 package Dbutil;
 
+import Beanclass.Crimebean;
+import Exception.Crimedetailsexep;
+
 public interface Intr_crimedetails {
 
-	public String addcomplaint();
+	public String addcomplaint(Crimebean cb) throws Crimedetailsexep;
 	
-	public String updatecomplaintstatus();
+	public String updatecomplaintstatus() throws Crimedetailsexep;
 	
-	public String altercomplaintdetails();
+	public String altercomplaintdetails() throws Crimedetailsexep;
 	
 	
 }

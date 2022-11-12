@@ -67,6 +67,18 @@ public class Crimebean {
 		this.status = status;
 	}
 	
+	public Crimebean( LocalDate date_of_crime, String place_of_crime, int crime_id, String victime_names,
+			String suspect_names, String status) {
+		super();
+		
+		this.date_of_crime = date_of_crime;
+		this.place_of_crime = place_of_crime;
+		this.crime_id = crime_id;
+		this.victime_names = victime_names;
+		this.suspect_names = suspect_names;
+		this.status = status;
+	}
+	
 	public Crimebean() {}
 	
 	@Override

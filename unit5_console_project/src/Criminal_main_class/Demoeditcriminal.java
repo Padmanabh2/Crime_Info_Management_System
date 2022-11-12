@@ -25,6 +25,8 @@ public class Demoeditcriminal {
 			System.out.println("enter 6 for bodymark update");
 			System.out.println("enter 7 for area of arrest update");
 			System.out.println("enter 8 for crime type/id update");
+			
+			System.out.println("--------------------------------");
 	
 		}
 		
