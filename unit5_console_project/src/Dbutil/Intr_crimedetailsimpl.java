@@ -2,6 +2,7 @@ package Dbutil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import Beanclass.Crimebean;
 import Connection.Providecon;
@@ -16,19 +17,25 @@ public class Intr_crimedetailsimpl implements Intr_crimedetails {
 		
 		try (Connection con = Providecon.provideConnection()){
 			
-			PreparedStatement ps = con.prepareStatement("insert into main(date_of_crime,place_of_crime,crime_id,victime_names,suspect_names,status) values(?,?,?,?,?,?)");
+			PreparedStatement ps = con.prepareStatement("insert into main(date_of_crime,place_of_crime,crime_id,victime_names,suspect_names) values(?,?,?,?,?)");
 			
-			ps.setLong(1, cb.getDate_of_crime());
+			ps.setDate(1, cb.getDate_of_crime());
 			ps.setString(2, cb.getPlace_of_crime());
 			ps.setInt(3, cb.getCrime_id());
 			ps.setString(4, cb.getVictime_names());
 			ps.setString(5, cb.getSuspect_names());
-			ps.setString(6, cb.getStatus());
 			
 			int x = ps.executeUpdate();
 			
-		} catch (Exception e) {
+			if(x>0) {
+				st = "complaint registered successfully...";
+			}else {
+				throw new Crimedetailsexep("check your date formate or other credentials properly");
+			}
+			
+		} catch (SQLException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return st;

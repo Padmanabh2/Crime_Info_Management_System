@@ -6,22 +6,23 @@ import java.time.LocalDate;
 public class Crimebean {
 
 	private int srno;
-	private LocalDate date_of_crime;
+	private Date date_of_crime;
 	private String place_of_crime;
 	private int crime_id;
 	private String victime_names;
 	private String suspect_names;
 	private String status;
+	
 	public int getSrno() {
 		return srno;
 	}
 	public void setSrno(int srno) {
 		this.srno = srno;
 	}
-	public LocalDate getDate_of_crime() {
+	public Date getDate_of_crime() {
 		return date_of_crime;
 	}
-	public void setDate_of_crime(LocalDate date_of_crime) {
+	public void setDate_of_crime(Date date_of_crime) {
 		this.date_of_crime = date_of_crime;
 	}
 	public String getPlace_of_crime() {
@@ -55,7 +56,7 @@ public class Crimebean {
 		this.status = status;
 	}
 	
-	public Crimebean(int srno, LocalDate date_of_crime, String place_of_crime, int crime_id, String victime_names,
+	public Crimebean(int srno, Date date_of_crime, String place_of_crime, int crime_id, String victime_names,
 			String suspect_names, String status) {
 		super();
 		this.srno = srno;
@@ -67,8 +68,8 @@ public class Crimebean {
 		this.status = status;
 	}
 	
-	public Crimebean( LocalDate date_of_crime, String place_of_crime, int crime_id, String victime_names,
-			String suspect_names, String status) {
+	public Crimebean( Date date_of_crime, String place_of_crime, int crime_id, String victime_names,
+			String suspect_names) {
 		super();
 		
 		this.date_of_crime = date_of_crime;
@@ -76,7 +77,7 @@ public class Crimebean {
 		this.crime_id = crime_id;
 		this.victime_names = victime_names;
 		this.suspect_names = suspect_names;
-		this.status = status;
+		
 	}
 	
 	public Crimebean() {}
