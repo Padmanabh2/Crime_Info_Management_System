@@ -1,5 +1,7 @@
 package Dbutil;
 
+import java.util.List;
+
 import Beanclass.Criminalbean;
 import Exception.Criminaldetailsexep;
 
@@ -26,5 +28,9 @@ public interface Intr_criminaldetails {
 	
 	
 	public String deletecriminaldetails(int id) throws Criminaldetailsexep;
+	
+	public List<Criminalbean> showallcriminaldetails() throws Criminaldetailsexep;
+	
+	public List<Criminalbean> showaccordingname() throws Criminaldetailsexep;
 	
 }

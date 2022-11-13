@@ -2,7 +2,10 @@ package Dbutil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Beanclass.Criminalbean;
 import Connection.Providecon;
@@ -323,6 +326,77 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		}
 		
 		return st;
+		
+	}
+
+	@Override
+	public List<Criminalbean> showallcriminaldetails() throws Criminaldetailsexep {
+		
+		List<Criminalbean> cb = new ArrayList<Criminalbean>();
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select * from criminal_details");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("cri_id");
+				String nm = rs.getString("cri_name");
+				int age = rs.getInt("cri_age");
+				String gen = rs.getString("cri_gender");
+				String add = rs.getString("cri_address");
+				String bm = rs.getString("cri_bodymark");
+				String area = rs.getString("area_of_arrest");
+				int typeorid = rs.getInt("crime_type_or_id");
+				
+				cb.add(new Criminalbean(id,nm,age,gen,add,bm,area,typeorid));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Criminaldetailsexep("some error occured...");
+		}
+		
+		return cb;
+	}
+
+	@Override
+	public List<Criminalbean> showaccordingname() throws Criminaldetailsexep {
+		
+		List<Criminalbean> cb = new ArrayList<Criminalbean>();
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement(" select * from criminal_details group by cri_name order by cri_age desc;");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("cri_id");
+				String nm = rs.getString("cri_name");
+				int age = rs.getInt("cri_age");
+				String gen = rs.getString("cri_gender");
+				String add = rs.getString("cri_address");
+				String bm = rs.getString("cri_bodymark");
+				String area = rs.getString("area_of_arrest");
+				int typeorid = rs.getInt("crime_type_or_id");
+				
+				cb.add(new Criminalbean(id,nm,age,gen,add,bm,area,typeorid));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Criminaldetailsexep("some error occured...");
+		}
+		
+		return cb;
 		
 	}
 

@@ -10,6 +10,7 @@ public class Criminalbean {
 	private String cri_bodymark;
 	private String area_of_arrest;
 	private int crime_type_or_id;
+	
 	public int getCri_id() {
 		return cri_id;
 	}
