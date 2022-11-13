@@ -37,4 +37,8 @@ public interface Intr_crimedetails {
 	public List<Crimebean> showallcomplaintbyplaceofcrime() throws Crimedetailsexep;
 	
 	public List<Crimebean> searchvictimename(String vic_name) throws Crimedetailsexep;
+	
+	public int solvedcrimes() throws Crimedetailsexep;
+	public int unsolvedcrimes() throws Crimedetailsexep;
+	public int numberofrecords(int month, int year) throws Crimedetailsexep;
 }

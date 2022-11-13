@@ -417,5 +417,91 @@ public class Intr_crimedetailsimpl implements Intr_crimedetails {
 		return cb;
 	}
 
+	@Override
+	public int solvedcrimes() throws Crimedetailsexep {
+		
+		int x = 0;
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select count(srno) from main where status = 'solved'");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				int xy = rs.getInt("count(srno)");
+				x=xy;
+			}else {
+				throw new Crimedetailsexep("some error occured");
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
+
+	@Override
+	public int unsolvedcrimes() throws Crimedetailsexep {
+		
+		int x = 0;
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select count(srno) from main where status = 'not_solved'");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				int xy = rs.getInt("count(srno)");
+				x=xy;
+			}else {
+				throw new Crimedetailsexep("some error occured");
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
+
+	@Override
+	public int numberofrecords(int month, int year) throws Crimedetailsexep {
+		
+		int x = 0;
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select count(srno) from main where month(date_of_crime) = ? and year(date_of_crime) = ?");
+			ps.setInt(1, month);
+			ps.setInt(2, year);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				int xy = rs.getInt("count(srno)");
+				x=xy;
+			}else {
+				throw new Crimedetailsexep("some error occured");
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
+
 
 }

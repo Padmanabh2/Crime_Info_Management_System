@@ -7,6 +7,8 @@ import Crime_main_class.Democrimedisplay;
 import Crime_main_class.Demodeletecomplaint;
 import Crime_main_class.Demoeditcrimedetails;
 import Crime_main_class.Demosearchcrime;
+import Crime_main_class.Demosolvedandunsolved;
+import Crime_main_class.Demosolvedincurrentmonth;
 import Crime_main_class.Demoupdatestatus;
 import Crimetypeinfo_main_class.Demoaddtype;
 import Crimetypeinfo_main_class.Demoaltertype;
@@ -50,6 +52,11 @@ public class Main1 {
 				
 				System.out.println("-------------------------------------------------------");
 				
+				
+				
+				System.out.println("Enter 12 to get solved and unsolved complaint");
+				
+				System.out.println("Enter 14 to get number of crimes in current month");
 				
 				System.out.println("Press 00 to Log Out");
 				
@@ -140,6 +147,18 @@ public class Main1 {
 			case 22:
 				
 				Demoaltertype.main(args);
+				
+				break;
+				
+			case 12:
+				
+				Demosolvedandunsolved.main(args);
+				
+				break;
+				
+			case 14:
+				
+				Demosolvedincurrentmonth.main(args);
 				
 				break;
 				
