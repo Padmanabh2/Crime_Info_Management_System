@@ -371,7 +371,7 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 		
 		try (Connection con = Providecon.provideConnection()){
 			
-			PreparedStatement ps = con.prepareStatement(" select * from criminal_details group by cri_name order by cri_age desc;");
+			PreparedStatement ps = con.prepareStatement("select * from criminal_details group by cri_name order by cri_age desc");
 			
 			ResultSet rs = ps.executeQuery();
 			
@@ -394,6 +394,44 @@ public class Intr_criminaldetails_impl implements Intr_criminaldetails {
 			// TODO: handle exception
 			e.printStackTrace();
 			throw new Criminaldetailsexep("some error occured...");
+		}
+		
+		return cb;
+		
+	}
+
+	@Override
+	public List<Criminalbean> searchonname(String nm) throws Criminaldetailsexep {
+		
+		List<Criminalbean> cb = new ArrayList<Criminalbean>();
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select * from criminal_details where cri_name = ?");
+			
+			ps.setString(1, nm);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("cri_id");
+				String nm1 = rs.getString("cri_name");
+				int age = rs.getInt("cri_age");
+				String gen = rs.getString("cri_gender");
+				String add = rs.getString("cri_address");
+				String bm = rs.getString("cri_bodymark");
+				String area = rs.getString("area_of_arrest");
+				int typeorid = rs.getInt("crime_type_or_id");
+				
+				cb.add(new Criminalbean(id,nm1,age,gen,add,bm,area,typeorid));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Criminaldetailsexep("please enter valid name...");
 		}
 		
 		return cb;

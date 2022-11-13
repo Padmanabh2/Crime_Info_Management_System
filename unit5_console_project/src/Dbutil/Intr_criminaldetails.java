@@ -33,4 +33,6 @@ public interface Intr_criminaldetails {
 	
 	public List<Criminalbean> showaccordingname() throws Criminaldetailsexep;
 	
+	public List<Criminalbean> searchonname(String nm) throws Criminaldetailsexep;
+	
 }

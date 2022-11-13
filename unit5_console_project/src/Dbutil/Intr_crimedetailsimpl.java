@@ -382,5 +382,40 @@ public class Intr_crimedetailsimpl implements Intr_crimedetails {
 		
 	}
 
+	@Override
+	public List<Crimebean> searchvictimename(String vic_name) throws Crimedetailsexep {
+		
+		List<Crimebean> cb = new ArrayList<Crimebean>();
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select * from main where victime_names = ?");
+			
+			ps.setString(1, vic_name);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int srno = rs.getInt("srno");
+				Date dt = rs.getDate("date_of_crime");
+				String place = rs.getString("place_of_crime");
+				int crimeid = rs.getInt("crime_id");
+				String vnm = rs.getString("victime_names");
+				String snm = rs.getString("suspect_names");
+				String status = rs.getString("status");
+				
+				cb.add(new Crimebean(srno,dt,place,crimeid,vnm,snm,status));
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Crimedetailsexep("enter victime name correctly");
+		}
+		
+		return cb;
+	}
+
 
 }

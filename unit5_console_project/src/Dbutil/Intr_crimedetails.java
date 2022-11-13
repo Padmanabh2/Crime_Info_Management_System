@@ -36,5 +36,5 @@ public interface Intr_crimedetails {
 	
 	public List<Crimebean> showallcomplaintbyplaceofcrime() throws Crimedetailsexep;
 	
-	
+	public List<Crimebean> searchvictimename(String vic_name) throws Crimedetailsexep;
 }
