@@ -9,6 +9,10 @@ public class Demologin {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		{
+			System.out.println("admin user name is abc@ and pwd is 1234");
+		}
+		
 		Intr_admin_impl lt1 = new Intr_admin_impl();
 		
 		Scanner sc = new Scanner(System.in);
