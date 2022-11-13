@@ -24,6 +24,7 @@ public class Demologin {
 			Boolean x = lt1.adminlogin(unm, pw);
 			if(x) {
 				System.out.println("admin logged in...");
+				Main1.main(args);
 			}else {
 				System.out.println("enter correct credentials...");
 			}
