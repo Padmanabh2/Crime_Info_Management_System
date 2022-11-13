@@ -12,6 +12,7 @@ import Crime_main_class.Demosolvedincurrentmonth;
 import Crime_main_class.Demoupdatestatus;
 import Crimetypeinfo_main_class.Demoaddtype;
 import Crimetypeinfo_main_class.Demoaltertype;
+import Crimetypeinfo_main_class.Demodisplaycrimetype;
 import Criminal_main_class.Demoaddcriminal;
 import Criminal_main_class.Demodeletecriminal;
 import Criminal_main_class.Demodisplaycriminal;
@@ -49,6 +50,7 @@ public class Main1 {
 				
 				System.out.println("Enter 11 to add crime - type");
 				System.out.println("Enter 22 to alter crime - type");
+				System.out.println("Enter 33 to get crime type table");
 				
 				System.out.println("-------------------------------------------------------");
 				
@@ -159,6 +161,12 @@ public class Main1 {
 			case 14:
 				
 				Demosolvedincurrentmonth.main(args);
+				
+				break;
+				
+			case 33:
+				
+				Demodisplaycrimetype.main(args);
 				
 				break;
 				

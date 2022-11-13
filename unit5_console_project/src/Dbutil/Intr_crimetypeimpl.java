@@ -2,8 +2,12 @@ package Dbutil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import Beanclass.Crimetypebean;
 import Connection.Providecon;
 import Exception.Crimetypeexep;
 
@@ -30,6 +34,7 @@ public class Intr_crimetypeimpl implements Intr_crimetype {
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return st;
@@ -58,9 +63,38 @@ public class Intr_crimetypeimpl implements Intr_crimetype {
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return st;
+		
+	}
+
+	@Override
+	public List<Crimetypebean> showcrimetype() throws Crimetypeexep {
+		
+		List<Crimetypebean> bb = new ArrayList<Crimetypebean>();
+		
+		try (Connection con = Providecon.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select * from crime_type");
+
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int criid = rs.getInt("crime_id");
+				String crnm = rs.getString("crime_name");
+				
+				bb.add(new Crimetypebean(criid, crnm));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}
+		
+		return bb;
 		
 	}
 
